@@ -1,10 +1,8 @@
 extends layout
 
 block content
+  h1= title
   form(action='/new', method='POST')
-    label
-      | name
-      input(type='text', name='name')
-      | message
-      input(type='text', name='messageText')
+    input(type='text', name='name', placeholder='Name', required)
+    textarea(name='messageText', placeholder='Message', required)
     button(type='submit') submit

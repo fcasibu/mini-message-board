@@ -3,5 +3,10 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  each message in messages
-    p= message.text
+  a(href='/new') Add a message
+  div(class='cards')
+    each message in messages
+      div(class='card')
+        h2= message.user
+        p= message.text
+        span= message.added

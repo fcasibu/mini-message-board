@@ -1,16 +1,17 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 
 const messages = [
   {
     text: 'Hello',
     user: 'John',
-    added: new Date()
+    added: moment(new Date('2019')).fromNow()
   },
   {
     text: 'Hello world',
     user: 'Alex',
-    added: new Date()
+    added: moment(new Date('2021')).fromNow()
   }
 ]
 
@@ -22,13 +23,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', (req, res) => {
+  res.locals.title = "New Message";
   res.render('form')
 })
 
 router.post('/new', function(req, res) {
   const { messageText, name} = req.body;
 
-  messages.push({text: messageText, user: name, added: new Date()});
+  messages.push({text: messageText, user: name, added: moment(new Date()).fromNow()});
   res.redirect('/');
 })
 
