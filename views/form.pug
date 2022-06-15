@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  form(action='/new', method='POST')
+    label
+      | name
+      input(type='text', name='name')
+      | message
+      input(type='text', name='messageText')
+    button(type='submit') submit
